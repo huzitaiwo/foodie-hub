@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Foodie - Everything you crave, delivered.</title>
+    <meta
+      name="description"
+      content="Thoughtful food from the people making your neighbourhood delicious. Order from independent kitchens near you."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Foodie - Everything you crave, delivered."
+    />
+    <meta
+      property="og:description"
+      content="Thoughtful food from independent kitchens, delivered with good timing."
+    />
+    <meta property="og:image" content="images/hero.jpg" />
+    <meta name="theme-color" content="#1a3a44" />
+
+    <link
+      rel="shortcut icon"
+      href="assets/icons/favicon.png"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/home.css" />
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div data-component="header"></div>
+
+    <main id="main">
+      <!-- Hero -->
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="container hero__grid">
+          <div class="hero__copy">
+            <p class="eyebrow reveal">Good food has momentum</p>
+            <h1 id="hero-title" class="display reveal">
+              Everything you crave, <em>delivered.</em>
+            </h1>
+            <p class="hero__lead reveal">
+              Thoughtful food from the people making your neighbourhood
+              delicious. Here when appetite strikes.
+            </p>
+
+            <div class="hero__search reveal">
+              <button
+                class="location-btn"
+                type="button"
+                data-open-location
+                aria-haspopup="dialog"
+              >
+                <svg class="icon" aria-hidden="true"><use href="#i-pin" /></svg>
+                <span class="location-btn__label">Deliver to</span>
+                <strong data-location-label>Wapping, London</strong>
+              </button>
+              <a class="btn btn--primary" href="#near">
+                Explore food
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-arrow" />
+                </svg>
+              </a>
+            </div>
+
+            <p class="hero__status reveal">
+              <span class="status-dot" aria-hidden="true"></span> Now delivering
+              <span class="hero__divider" aria-hidden="true"></span>
+              <span>Freshly prepared. Carefully carried.</span>
+            </p>
+          </div>
+
+          <figure class="hero__media reveal">
+            <div class="hero__frame">
+              <img
+                src="assets/images/hero.jpg"
+                alt="A table of sushi, tacos and shared bowls"
+                width="900"
+                height="780"
+                fetchpriority="high"
+              />
+              <figcaption class="hero__tile">
+                <div>
+                  <span class="hero__tile-kicker">Tonight’s table</span>
+                  <span class="hero__tile-title">A little of everything</span>
+                </div>
+                <a
+                  class="hero__tile-go"
+                  href="#near"
+                  aria-label="See tonight’s table"
+                >
+                  <svg class="icon" aria-hidden="true">
+                    <use href="#i-arrow" />
+                  </svg>
+                </a>
+              </figcaption>
+            </div>
+            <div class="hero__badge">
+              <span class="hero__badge-icon"
+                ><svg class="icon" aria-hidden="true">
+                  <use href="#i-bike" /></svg
+              ></span>
+              <span>
+                <span class="hero__badge-kicker">Delivery</span>
+                <strong>Usually 20–35 min</strong>
+              </span>
+            </div>
+          </figure>
+        </div>
+      </section>
+
+      <!-- Moods / cuisines -->
+      <section class="section moods" aria-labelledby="moods-title">
+        <div class="container">
+          <header class="section-head">
+            <div>
+              <p class="eyebrow">Find your feeling</p>
+              <h2 id="moods-title" class="h2">Made for every mood.</h2>
+            </div>
+            <a class="link-arrow" href="restaurants.html"
+              >All restaurants
+              <svg class="icon icon--sm" aria-hidden="true">
+                <use href="#i-chevron" />
+              </svg>
+            </a>
+          </header>
+          <ul class="moods__grid" id="cuisine-list" role="list"></ul>
+        </div>
+      </section>
+
+      <!-- Near you -->
+      <section class="section near" id="near" aria-labelledby="near-title">
+        <div class="container">
+          <header class="section-head section-head--light">
+            <div>
+              <p class="eyebrow eyebrow--accent">Close, quick, considered</p>
+              <h2 id="near-title" class="h2">Your next favourite is near.</h2>
+            </div>
+            <a class="btn btn--accent" href="restaurants.html"
+              >See what’s open</a
+            >
+          </header>
+          <ul
+            class="near__grid"
+            id="restaurant-list"
+            role="list"
+            aria-live="polite"
+            aria-busy="true"
+          ></ul>
+        </div>
+      </section>
+
+      <!-- Offer -->
+      <section class="section offer" aria-labelledby="offer-title">
+        <div class="container">
+          <div class="offer__card reveal">
+            <div>
+              <p class="eyebrow eyebrow--ink">A good reason to stay in</p>
+              <h2 id="offer-title" class="h2 h2--xl">
+                £8 off your first shared table.
+              </h2>
+              <p class="offer__text">
+                Make an evening of it. We’ll bring the generous bits.
+              </p>
+            </div>
+            <a class="btn btn--primary" href="account.html?mode=signup">
+              Claim welcome offer
+              <svg class="icon" aria-hidden="true"><use href="#i-arrow" /></svg>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div data-component="footer"></div>
+
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>

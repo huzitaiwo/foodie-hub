@@ -1,0 +1,64 @@
+:root {
+  /* Type */
+  --font-display: "DM Serif Display", Georgia, "Times New Roman", serif;
+  --font-body: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Colour */
+  --c-bg: #fbf9f4;
+  --c-hero: #f7f0dc;
+  --c-surface: #ffffff;
+  --c-ink: #1a3a44;
+  --c-ink-hover: #12303a;
+  --c-text: #1d2b32;
+  --c-text-2: #55636b;
+  --c-muted: #76828a;
+  --c-border: #e8e4d9;
+  --c-green: #0e6b5c;
+  --c-mint: #e3f1e8;
+  --c-accent: #e5d13a;
+  --c-accent-hover: #d6c22a;
+  --c-success: #1f9d63;
+  --c-focus: #0e6b5c;
+
+  /* Tint set for cuisine icons */
+  --tint-green: #e3f1e8;
+  --tint-blue: #e1eef3;
+  --tint-orange: #fbe7dc;
+  --tint-purple: #ece6f4;
+  --tint-sage: #e6efe3;
+  --tint-sand: #f3eadb;
+
+  /* Spacing (4px base) */
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.5rem;
+  --s-6: 2rem;
+  --s-7: 3rem;
+  --s-8: 4.5rem;
+  --s-9: 6rem;
+
+  /* Layout */
+  --container: 1216px;
+  --gutter: clamp(1rem, 5vw, 1.5rem);
+  --header-h: 74px;
+
+  /* Shape */
+  --r-sm: 12px;
+  --r-md: 18px;
+  --r-lg: 24px;
+  --r-xl: 32px;
+  --r-pill: 999px;
+
+  /* Elevation */
+  --shadow-sm:
+    0 1px 2px rgba(26, 58, 68, 0.06), 0 4px 14px rgba(26, 58, 68, 0.05);
+  --shadow-md: 0 10px 30px rgba(26, 58, 68, 0.1);
+  --shadow-lg: 0 30px 70px rgba(120, 100, 30, 0.2);
+
+  /* Motion */
+  --ease: cubic-bezier(0.22, 0.8, 0.24, 1);
+  --t-fast: 0.18s;
+  --t-base: 0.32s;
+}
