@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Your basket — Foodie</title>
+    <meta
+      name="description"
+      content="Review your order, add a promo code and head to checkout."
+    />
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#1a3a44" />
+
+    <link
+      rel="shortcut icon"
+      href="assets/icons/favicon.png"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/basket.css" />
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div data-component="header"></div>
+
+    <main id="main" class="basket-page">
+      <div class="container">
+        <header class="section-head">
+          <div>
+            <p class="eyebrow">Your table is forming</p>
+            <h1 class="h2 h2--xl">Your basket.</h1>
+          </div>
+          <a class="link-arrow" href="restaurants.html"
+            >Add something good
+            <svg class="icon icon--sm" aria-hidden="true">
+              <use href="#i-arrow" />
+            </svg>
+          </a>
+        </header>
+
+        <div id="basket-root"></div>
+        <p
+          class="sr-only"
+          id="basket-live"
+          role="status"
+          aria-live="polite"
+        ></p>
+      </div>
+    </main>
+
+    <dialog class="dialog" id="clear-dialog" aria-labelledby="clear-title">
+      <form class="dialog__inner" method="dialog">
+        <h2 class="dialog__title" id="clear-title">Clear your basket?</h2>
+        <p class="dialog__text">
+          This removes every item from your order. You can’t undo it.
+        </p>
+        <div class="dialog__actions">
+          <button class="btn btn--outline" value="cancel">
+            Keep my basket
+          </button>
+          <button class="btn btn--primary" value="confirm">Clear basket</button>
+        </div>
+      </form>
+    </dialog>
+
+    <div data-component="footer"></div>
+
+    <script type="module" src="js/basket.js"></script>
+  </body>
+</html>

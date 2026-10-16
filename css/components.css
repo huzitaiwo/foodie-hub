@@ -658,3 +658,91 @@
   gap: var(--s-3);
   justify-content: flex-end;
 }
+
+/* ---------- Empty state (shared) ---------- */
+.empty-state {
+  display: grid;
+  justify-items: center;
+  gap: var(--s-4);
+  text-align: center;
+  padding: var(--s-9) var(--s-5);
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-md);
+}
+.empty-state__icon {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: var(--c-mint);
+  color: var(--c-green);
+  margin-bottom: var(--s-2);
+}
+.empty-state__icon .icon {
+  width: 1.4rem;
+  height: 1.4rem;
+}
+.empty-state__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.8rem, 3vw, 2.3rem);
+  letter-spacing: -0.035em;
+  color: var(--c-ink);
+  line-height: 1.1;
+}
+.empty-state__text {
+  max-width: 36ch;
+  color: var(--c-text-2);
+  font-size: 0.95rem;
+  margin-bottom: var(--s-3);
+}
+@media (max-width: 640px) {
+  .empty-state {
+    padding: var(--s-8) var(--s-5);
+    border-radius: var(--r-lg);
+  }
+}
+
+/* ---------- Quantity stepper (shared) ---------- */
+.qty {
+  display: inline-flex;
+  align-items: center;
+  border: 1.5px solid var(--c-border);
+  border-radius: var(--r-pill);
+  background: var(--c-surface);
+}
+.qty button {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  color: var(--c-ink);
+  transition:
+    background var(--t-fast),
+    transform var(--t-fast) var(--ease);
+}
+.qty button:hover {
+  background: var(--c-mint);
+}
+.qty button:active {
+  transform: scale(0.9);
+}
+.qty output {
+  min-width: 1.6rem;
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--c-ink);
+}
+
+.btn--block {
+  width: 100%;
+}
+.btn[disabled] {
+  opacity: 0.5;
+  pointer-events: none;
+}

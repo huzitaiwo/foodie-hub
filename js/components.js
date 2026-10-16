@@ -1,5 +1,5 @@
 // Shared UI written once. Every page mounts the same header, footer, icons and card templates.
-const escapeHtml = (s) =>
+export const escapeHtml = (s) =>
   String(s).replace(
     /[&<>"']/g,
     (c) =>
@@ -38,6 +38,10 @@ const sprite = `
   <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
   <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
   <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6M10 11v6M14 11v6"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+  <symbol id="i-tag" viewBox="0 0 24 24"><path d="M20.6 13.4l-7.2 7.2a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.2"/></symbol>
 </svg>`;
 
 const icon = (id, cls = "") =>
@@ -158,3 +162,19 @@ export const cuisineCard = (c) => `
       <span class="cuisine-card__sub">Local picks</span>
     </a>
   </li>`;
+
+export const emptyState = ({
+  icon: iconId,
+  title,
+  text,
+  ctaLabel,
+  ctaHref,
+}) => `
+  <div class="empty-state reveal is-visible">
+    <span class="empty-state__icon">${icon(iconId)}</span>
+    <h2 class="empty-state__title">${escapeHtml(title)}</h2>
+    <p class="empty-state__text">${escapeHtml(text)}</p>
+    <a class="btn btn--primary" href="${escapeHtml(ctaHref)}">${escapeHtml(ctaLabel)}</a>
+  </div>`;
+
+export { icon };
