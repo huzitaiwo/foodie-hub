@@ -765,3 +765,45 @@
     aspect-ratio: 2.1 / 1;
   }
 }
+
+/* ---------- Toast (shared) ---------- */
+.toast-region {
+  position: fixed;
+  left: 50%;
+  bottom: 1.25rem;
+  transform: translateX(-50%);
+  display: grid;
+  gap: 0.5rem;
+  z-index: 300;
+  width: max-content;
+  max-width: calc(100% - 2rem);
+}
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.8rem 1.2rem;
+  background: var(--c-ink);
+  color: #fff;
+  border-radius: var(--r-pill);
+  box-shadow: var(--shadow-md);
+  font-size: 0.9rem;
+  font-weight: 500;
+  animation: toast-in 0.35s var(--ease);
+  transition:
+    opacity 0.3s,
+    transform 0.3s;
+}
+.toast .icon {
+  color: var(--c-accent);
+}
+.toast.is-leaving {
+  opacity: 0;
+  transform: translateY(8px);
+}
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
