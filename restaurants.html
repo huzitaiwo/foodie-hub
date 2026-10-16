@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Discover restaurants near you — Foodie</title>
+    <meta
+      name="description"
+      content="Browse independent kitchens delivering near you. Search by name or cuisine and filter by delivery time and price."
+    />
+    <meta property="og:title" content="Good food, close by — Foodie" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="images/hero.jpg" />
+    <meta name="theme-color" content="#1a3a44" />
+
+    <link
+      rel="shortcut icon"
+      href="assets/icons/favicon.png"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/discover.css" />
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div data-component="header"></div>
+
+    <main id="main" class="discover-page">
+      <div class="container">
+        <header class="page-head">
+          <p class="eyebrow">
+            <button
+              class="eyebrow__btn"
+              type="button"
+              data-open-location
+              aria-haspopup="dialog"
+            >
+              Around <span data-area>Wapping</span>
+            </button>
+          </p>
+          <h1 class="display page-head__title">Good food, close by.</h1>
+          <p class="page-head__lead">
+            Pick a place worth looking forward to. Browse by what sounds good,
+            or search the menu.
+          </p>
+        </header>
+
+        <div class="searchbar">
+          <div class="search-field">
+            <svg class="icon" aria-hidden="true"><use href="#i-search" /></svg>
+            <label class="sr-only" for="search-input"
+              >Search restaurants or cuisines</label
+            >
+            <input
+              id="search-input"
+              type="search"
+              placeholder="Search restaurants or cuisines"
+              autocomplete="off"
+            />
+          </div>
+          <button
+            class="filter-toggle"
+            type="button"
+            id="filter-toggle"
+            aria-expanded="true"
+            aria-controls="filters"
+          >
+            <svg class="icon" aria-hidden="true"><use href="#i-sliders" /></svg>
+            More filters
+            <span class="filter-toggle__count" id="filter-count" hidden></span>
+          </button>
+        </div>
+
+        <div class="discover" id="discover">
+          <aside class="filters" id="filters" aria-label="Filters">
+            <form id="filters-form">
+              <div class="filters__head">
+                <h2 class="filters__title">Filter by</h2>
+                <button class="filters__clear" type="button" data-act="clear">
+                  Clear all
+                </button>
+              </div>
+
+              <div
+                class="filters__group"
+                role="radiogroup"
+                aria-labelledby="f-cuisine"
+              >
+                <h3 class="filters__label" id="f-cuisine">Cuisine</h3>
+                <div id="cuisine-options"></div>
+              </div>
+
+              <div
+                class="filters__group"
+                role="radiogroup"
+                aria-labelledby="f-time"
+              >
+                <h3 class="filters__label" id="f-time">Delivery time</h3>
+                <label class="opt"
+                  ><input type="radio" name="time" value="any" checked />
+                  Any</label
+                >
+                <label class="opt"
+                  ><input type="radio" name="time" value="25" /> Under 25
+                  min</label
+                >
+                <label class="opt"
+                  ><input type="radio" name="time" value="35" /> Under 35
+                  min</label
+                >
+              </div>
+
+              <div
+                class="filters__group"
+                role="radiogroup"
+                aria-labelledby="f-price"
+              >
+                <h3 class="filters__label" id="f-price">Price range</h3>
+                <label class="opt"
+                  ><input type="radio" name="price" value="any" checked />
+                  Any</label
+                >
+                <label class="opt"
+                  ><input type="radio" name="price" value="1" />
+                  <span aria-hidden="true">£</span
+                  ><span class="sr-only">Budget</span></label
+                >
+                <label class="opt"
+                  ><input type="radio" name="price" value="2" />
+                  <span aria-hidden="true">££</span
+                  ><span class="sr-only">Mid-range</span></label
+                >
+                <label class="opt"
+                  ><input type="radio" name="price" value="3" />
+                  <span aria-hidden="true">£££</span
+                  ><span class="sr-only">Premium</span></label
+                >
+              </div>
+
+              <div
+                class="filters__group"
+                role="radiogroup"
+                aria-labelledby="f-rating"
+              >
+                <h3 class="filters__label" id="f-rating">Rating</h3>
+                <label class="opt"
+                  ><input type="radio" name="rating" value="any" checked />
+                  Any</label
+                >
+                <label class="opt"
+                  ><input type="radio" name="rating" value="new" /> New to
+                  Foodie</label
+                >
+                <label class="opt"
+                  ><input type="radio" name="rating" value="feedback" />
+                  Feedback available</label
+                >
+                <p class="filters__note">
+                  Ratings are shown when customers choose to share feedback.
+                </p>
+              </div>
+            </form>
+          </aside>
+
+          <section class="results" aria-label="Restaurants">
+            <div class="results__bar">
+              <p
+                class="results__count"
+                id="results-count"
+                role="status"
+                aria-live="polite"
+              ></p>
+              <div class="sort">
+                <label class="sr-only" for="sort-select">Sort by</label>
+                <select id="sort-select">
+                  <option value="recommended">Recommended</option>
+                  <option value="fastest">Fastest delivery</option>
+                  <option value="price-asc">Price: low to high</option>
+                  <option value="price-desc">Price: high to low</option>
+                </select>
+                <svg class="icon icon--sm" aria-hidden="true">
+                  <use href="#i-chevron-down" />
+                </svg>
+              </div>
+            </div>
+            <ul
+              class="results__list"
+              id="results-list"
+              role="list"
+              aria-busy="true"
+            ></ul>
+            <div id="results-empty" hidden></div>
+          </section>
+        </div>
+
+        <section class="live" id="live" aria-labelledby="live-title" hidden>
+          <p class="eyebrow">Live on Foodie</p>
+          <h2 class="h2" id="live-title">
+            Independent kitchens, now ordering.
+          </h2>
+          <p class="live__text">
+            These menus are connected to Foodie’s persistent checkout.
+          </p>
+          <ul class="live__grid" id="live-list" role="list"></ul>
+        </section>
+      </div>
+    </main>
+
+    <div data-component="footer"></div>
+
+    <script type="module" src="js/restaurants.js"></script>
+  </body>
+</html>

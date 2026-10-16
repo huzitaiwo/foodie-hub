@@ -42,6 +42,9 @@ const sprite = `
   <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
   <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
   <symbol id="i-tag" viewBox="0 0 24 24"><path d="M20.6 13.4l-7.2 7.2a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.2"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></symbol>
+  <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 6h8M18 6h2M4 12h2M12 12h8M4 18h10M20 18h0"/><circle cx="15" cy="6" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="17" cy="18" r="2"/></symbol>
+  <symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
 </svg>`;
 
 const icon = (id, cls = "") =>
@@ -169,12 +172,17 @@ export const emptyState = ({
   text,
   ctaLabel,
   ctaHref,
+  ctaAct,
 }) => `
   <div class="empty-state reveal is-visible">
     <span class="empty-state__icon">${icon(iconId)}</span>
     <h2 class="empty-state__title">${escapeHtml(title)}</h2>
     <p class="empty-state__text">${escapeHtml(text)}</p>
-    <a class="btn btn--primary" href="${escapeHtml(ctaHref)}">${escapeHtml(ctaLabel)}</a>
+    ${
+      ctaHref
+        ? `<a class="btn btn--primary" href="${escapeHtml(ctaHref)}">${escapeHtml(ctaLabel)}</a>`
+        : `<button class="btn btn--primary" type="button" data-act="${escapeHtml(ctaAct)}">${escapeHtml(ctaLabel)}</button>`
+    }
   </div>`;
 
 export { icon };

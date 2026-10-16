@@ -235,9 +235,12 @@
   background: var(--c-green);
   transition: right var(--t-base) var(--ease);
 }
-.site-nav a:hover::after,
-.site-nav a[aria-current="page"]::after {
+.site-nav a:hover::after {
   right: 0;
+}
+.site-nav a[aria-current="page"] {
+  color: var(--c-green);
+  font-weight: 700;
 }
 
 .site-header__actions {
@@ -745,4 +748,20 @@
 .btn[disabled] {
   opacity: 0.5;
   pointer-events: none;
+}
+
+/* ---------- Skeleton (shared, light surfaces) ---------- */
+.skeleton {
+  min-height: 300px;
+  border-radius: var(--r-lg);
+  background: linear-gradient(100deg, #efebdf 30%, #f7f4ea 50%, #efebdf 70%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+}
+
+/* Mobile card image ratio (matches the mobile screenshots) */
+@media (max-width: 640px) {
+  .rest-card__media {
+    aspect-ratio: 2.1 / 1;
+  }
 }

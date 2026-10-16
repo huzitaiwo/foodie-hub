@@ -92,6 +92,7 @@ export function initLayout() {
     const area = dialog.querySelector('input[name="area"]:checked').value;
     store.set("foodie.location", area);
     setLabel(area);
+    window.dispatchEvent(new CustomEvent("location:change", { detail: area }));
   });
   dialog.addEventListener("click", (e) => {
     if (e.target === dialog) dialog.close("cancel");
