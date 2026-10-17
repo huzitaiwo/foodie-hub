@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Track your order — Foodie</title>
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#1a3a44" />
+
+    <link
+      rel="shortcut icon"
+      href="assets/icons/favicon.png"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/track.css" />
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div data-component="header"></div>
+
+    <main id="main" class="track">
+      <div class="container">
+        <div id="tr-empty" hidden></div>
+
+        <div id="tr-view" hidden>
+          <header class="section-head">
+            <div>
+              <p class="eyebrow">Order #<span id="tr-id"></span></p>
+              <h1 class="h2 h2--xl" id="tr-title"></h1>
+              <p class="track__lead" id="tr-text"></p>
+            </div>
+            <p class="eta" id="tr-eta">
+              <svg class="icon" aria-hidden="true"><use href="#i-clock" /></svg
+              ><span id="tr-eta-text"></span>
+            </p>
+          </header>
+
+          <div class="track__grid">
+            <div class="track__main">
+              <section class="route" aria-label="Delivery route">
+                <svg
+                  class="route__svg"
+                  viewBox="0 0 600 220"
+                  role="img"
+                  aria-labelledby="route-alt"
+                  preserveAspectRatio="xMidYMid slice"
+                >
+                  <title id="route-alt">
+                    Illustrative route from the restaurant to your address
+                  </title>
+                  <path
+                    class="route__road"
+                    d="M40 170 C 140 170, 150 60, 260 80 S 400 170, 470 110 S 540 50, 560 50"
+                  />
+                  <path
+                    class="route__line"
+                    id="route-line"
+                    d="M40 170 C 140 170, 150 60, 260 80 S 400 170, 470 110 S 540 50, 560 50"
+                    pathLength="1"
+                  />
+                  <circle
+                    class="route__pin route__pin--from"
+                    cx="40"
+                    cy="170"
+                    r="9"
+                  />
+                  <circle
+                    class="route__pin route__pin--to"
+                    cx="560"
+                    cy="50"
+                    r="9"
+                  />
+                  <g class="route__rider" id="route-rider">
+                    <circle r="12" />
+                    <circle r="4.5" class="route__rider-core" />
+                  </g>
+                </svg>
+                <div class="route__labels">
+                  <span id="route-from"></span><span id="route-to"></span>
+                </div>
+              </section>
+
+              <section class="panel-card" aria-labelledby="tl-title">
+                <p class="eyebrow">Progress</p>
+                <h2 class="panel-card__title" id="tl-title">
+                  Where your food is
+                </h2>
+                <ol class="timeline" id="timeline"></ol>
+              </section>
+            </div>
+
+            <aside class="track__side">
+              <section
+                class="panel-card"
+                aria-labelledby="partner-title"
+                id="partner"
+                hidden
+              >
+                <p class="eyebrow">Delivery partner</p>
+                <h2 class="panel-card__title" id="partner-title"></h2>
+                <p class="track__small">
+                  Has your order and is heading to your door.
+                </p>
+              </section>
+
+              <section class="panel-card" aria-labelledby="sum-title">
+                <p class="eyebrow" id="tr-from"></p>
+                <h2 class="panel-card__title" id="sum-title">Your order</h2>
+                <ul class="summary__lines" id="tr-lines" role="list"></ul>
+                <dl class="summary__totals" id="tr-totals"></dl>
+                <p class="track__small">
+                  <strong>Delivering to</strong><br /><span
+                    id="tr-address"
+                  ></span>
+                </p>
+              </section>
+
+              <p class="track__help">
+                Something not right?
+                <a class="link-action" href="index.html#help">Get help</a>
+              </p>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div data-component="footer"></div>
+    <script type="module" src="js/track.js"></script>
+  </body>
+</html>

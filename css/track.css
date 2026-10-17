@@ -1,0 +1,242 @@
+.track {
+  padding-block: var(--s-7) var(--s-9);
+  min-height: 68vh;
+}
+.track__lead {
+  margin-top: 0.6rem;
+  max-width: 52ch;
+  color: var(--c-text-2);
+}
+.track__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 28px;
+  align-items: start;
+}
+.track__main,
+.track__side {
+  display: grid;
+  gap: 20px;
+}
+.track__small {
+  margin-top: 0.5rem;
+  font-size: 0.88rem;
+  color: var(--c-text-2);
+}
+.track__help {
+  text-align: center;
+  font-size: 0.88rem;
+  color: var(--c-muted);
+}
+
+.eta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex: none;
+  padding: 0.75rem 1.2rem;
+  border-radius: var(--r-pill);
+  background: var(--c-ink);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+.eta .icon {
+  color: var(--c-accent);
+}
+
+/* ---------- Route ---------- */
+.route {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--r-xl);
+  border: 1px solid var(--c-border);
+  background: #eaf1ea;
+  box-shadow: var(--shadow-sm);
+}
+.route__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 280px;
+}
+.route__road {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 14;
+  stroke-linecap: round;
+}
+.route__line {
+  fill: none;
+  stroke: var(--c-green);
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 1s linear;
+}
+.route__pin {
+  stroke: #fff;
+  stroke-width: 3;
+}
+.route__pin--from {
+  fill: var(--c-ink);
+}
+.route__pin--to {
+  fill: var(--c-accent);
+}
+.route__rider circle:first-child {
+  fill: rgba(14, 107, 92, 0.22);
+  animation: ping 2s infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.route__rider-core {
+  fill: var(--c-green);
+  stroke: #fff;
+  stroke-width: 2;
+}
+.route__rider {
+  transition: transform 1s linear;
+}
+.route__labels {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 18px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--c-ink);
+  background: rgba(255, 255, 255, 0.7);
+  border-top: 1px solid var(--c-border);
+}
+@keyframes ping {
+  50% {
+    transform: scale(1.5);
+    opacity: 0.4;
+  }
+}
+
+/* ---------- Timeline ---------- */
+.timeline {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.step {
+  position: relative;
+  display: flex;
+  gap: 14px;
+  padding-bottom: 22px;
+  color: var(--c-muted);
+}
+.step:last-child {
+  padding-bottom: 0;
+}
+.step::before {
+  content: "";
+  position: absolute;
+  left: 11px;
+  top: 26px;
+  bottom: 2px;
+  width: 2px;
+  background: var(--c-border);
+}
+.step:last-child::before {
+  display: none;
+}
+.step__dot {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid var(--c-border);
+  background: var(--c-surface);
+  color: #fff;
+}
+.step__dot .icon {
+  display: none;
+  width: 0.75rem;
+  height: 0.75rem;
+  stroke-width: 3;
+}
+.step__label {
+  font-weight: 700;
+  padding-top: 0.1rem;
+}
+.step__time {
+  display: block;
+  font-weight: 400;
+  font-size: 0.78rem;
+  color: var(--c-muted);
+}
+.step--done {
+  color: var(--c-ink);
+}
+.step--done::before {
+  background: var(--c-green);
+}
+.step--done .step__dot {
+  background: var(--c-green);
+  border-color: var(--c-green);
+}
+.step--done .step__dot .icon {
+  display: block;
+}
+.step--current {
+  color: var(--c-ink);
+}
+.step--current .step__dot {
+  border-color: var(--c-green);
+}
+.step--current .step__dot::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--c-green);
+  animation: pulse-dot 1.8s infinite;
+}
+@keyframes pulse-dot {
+  50% {
+    transform: scale(0.6);
+    opacity: 0.6;
+  }
+}
+
+/* ---------- Order summary (shared rules with checkout) ---------- */
+.track .summary__lines {
+  margin-top: 0;
+}
+
+@media (max-width: 960px) {
+  .track__grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 640px) {
+  .track {
+    padding-block: var(--s-6) var(--s-8);
+  }
+  .section-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--s-3);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .route__line,
+  .route__rider {
+    transition: none;
+  }
+  .route__rider circle:first-child,
+  .step--current .step__dot::after {
+    animation: none;
+  }
+}
