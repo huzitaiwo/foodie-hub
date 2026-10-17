@@ -54,6 +54,8 @@ const sprite = `
   <symbol id="i-dollar" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M14.8 9.2A2.8 2.8 0 0 0 12 8c-1.7 0-2.8.9-2.8 2s1 1.7 2.8 2 2.8.9 2.8 2-1.1 2-2.8 2a2.8 2.8 0 0 1-2.8-1.2M12 6v2M12 16v2"/></symbol>
   <symbol id="i-pot" viewBox="0 0 24 24"><path d="M4 11h16v6a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3zM9 7c0-1 1-1.5 1-2.5M14 7c0-1 1-1.5 1-2.5M2 11h2M20 11h2"/></symbol>
   <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></symbol>
+    <symbol id="i-truck" viewBox="0 0 24 24"><path d="M2 5h12v11H2zM14 9h4l3 3v4h-7"/><circle cx="6.5" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/></symbol>
+  <symbol id="i-power" viewBox="0 0 24 24"><path d="M12 3v8M6.4 6.4a8 8 0 1 0 11.2 0"/></symbol>
 </svg>`;
 
 export const mountSprite = () =>
@@ -67,7 +69,7 @@ const logo = `<a class="logo" href="index.html" aria-label="Foodie home"><span c
 const navLinks = [
   { href: "restaurants.html", label: "Discover" },
   { href: "workspace.html", label: "For restaurants" },
-  { href: "deliver.html", label: "Deliver with us" },
+  { href: "delivery.html", label: "Deliver with us" },
 ];
 
 const headerHtml = () => {
@@ -104,7 +106,7 @@ const footerHtml = () => `
       <p class="site-footer__tagline">Designed around appetite, independent kitchens, and good timing.</p>
       <ul class="site-footer__links" role="list">
         <li><a href="restaurants.html">Restaurants</a></li>
-        <li><a href="deliver.html">Delivery partners</a></li>
+        <li><a href="delivery.html">Delivery partners</a></li>
         <li><a href="platform.html">Platform</a></li>
       </ul>
     </div>
