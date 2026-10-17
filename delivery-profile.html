@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Profile — Delivery partner workspace · Foodie</title>
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#1a3a44" />
+
+    <link
+      rel="shortcut icon"
+      href="assets/icons/favicon.png"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/workspace.css" />
+    <link rel="stylesheet" href="css/delivery.css" />
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
+  </head>
+  <body
+    class="ws-body ws-body--delivery"
+    data-workspace="delivery"
+    data-active="profile"
+  >
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="ws" id="ws">
+      <div data-component="ws-sidebar"></div>
+      <div class="ws__body">
+        <div data-component="ws-topbar"></div>
+        <main id="main" class="ws-main">
+          <header class="ws-head">
+            <div>
+              <p class="eyebrow" data-status-eyebrow></p>
+              <h1 class="display ws-title">Your profile, your pace.</h1>
+              <p class="ws-sub" data-status-sub></p>
+            </div>
+            <button
+              class="btn btn--primary"
+              type="button"
+              data-status-btn
+            ></button>
+          </header>
+
+          <form class="settings" id="profile-form" novalidate>
+            <section class="panel" aria-labelledby="details-title">
+              <header class="panel__head">
+                <div>
+                  <p class="eyebrow">Your details</p>
+                  <h2 class="panel__title" id="details-title">
+                    How we reach you.
+                  </h2>
+                </div>
+              </header>
+              <div class="settings__fields">
+                <div class="field">
+                  <label for="d-name">Name</label
+                  ><input
+                    id="d-name"
+                    maxlength="60"
+                    autocomplete="name"
+                    required
+                  />
+                </div>
+                <div class="field">
+                  <label for="d-phone">Phone (optional)</label
+                  ><input
+                    id="d-phone"
+                    type="tel"
+                    maxlength="24"
+                    autocomplete="tel"
+                  />
+                </div>
+                <div class="field">
+                  <label for="d-vehicle">Vehicle</label>
+                  <select id="d-vehicle" class="input">
+                    <option>Bicycle</option>
+                    <option>E-bike</option>
+                    <option>Scooter</option>
+                    <option>Car</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="d-area">Delivery area</label
+                  ><input id="d-area" maxlength="60" autocomplete="off" />
+                </div>
+              </div>
+              <div class="setting">
+                <div>
+                  <p class="setting__label">New request alerts</p>
+                  <p class="setting__hint">
+                    Get a nudge when a delivery is assigned to you.
+                  </p>
+                </div>
+                <label class="switch"
+                  ><input type="checkbox" role="switch" id="d-alerts" /><span
+                    class="switch__track"
+                    aria-hidden="true"
+                  ></span
+                  ><span class="sr-only">New request alerts</span></label
+                >
+              </div>
+            </section>
+
+            <div class="settings__bar">
+              <p class="field-error" id="profile-error" role="alert"></p>
+              <button class="btn btn--primary" type="submit">
+                Save profile
+              </button>
+            </div>
+          </form>
+        </main>
+      </div>
+    </div>
+    <script type="module" src="js/delivery/profile.js"></script>
+  </body>
+</html>
