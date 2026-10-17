@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Settings — Restaurant workspace · Foodie</title>
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#1a3a44" />
+
+    <link
+      rel="shortcut icon"
+      href="assets/icons/favicon.png"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/workspace.css" />
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
+  </head>
+  <body class="ws-body" data-active="settings">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="ws" id="ws">
+      <div data-component="ws-sidebar"></div>
+      <div class="ws__body">
+        <div data-component="ws-topbar"></div>
+        <main id="main" class="ws-main">
+          <header class="ws-head">
+            <div>
+              <p class="eyebrow">Run it your way</p>
+              <h1 class="display ws-title">Settings.</h1>
+              <p class="ws-sub">
+                Control when you take orders, how far you deliver, and what
+                customers see.
+              </p>
+            </div>
+          </header>
+
+          <form class="settings" id="settings-form" novalidate>
+            <section class="panel" aria-labelledby="service-title">
+              <header class="panel__head">
+                <div>
+                  <p class="eyebrow">Service</p>
+                  <h2 class="panel__title" id="service-title">
+                    Taking orders.
+                  </h2>
+                </div>
+              </header>
+              <div class="setting">
+                <div>
+                  <p class="setting__label">Accepting orders</p>
+                  <p class="setting__hint">
+                    Turn this off to pause new orders. Existing orders carry on.
+                  </p>
+                </div>
+                <label class="switch"
+                  ><input type="checkbox" role="switch" id="accepting" /><span
+                    class="switch__track"
+                    aria-hidden="true"
+                  ></span
+                  ><span class="sr-only">Accepting orders</span></label
+                >
+              </div>
+              <div class="setting">
+                <div>
+                  <p class="setting__label">
+                    <label for="prep">Preparation time</label>
+                  </p>
+                  <p class="setting__hint">
+                    Your target, in minutes. Shown to customers as part of the
+                    delivery estimate.
+                  </p>
+                </div>
+                <input
+                  class="input input--sm"
+                  id="prep"
+                  type="number"
+                  min="5"
+                  max="90"
+                  step="1"
+                  inputmode="numeric"
+                />
+              </div>
+              <div class="setting">
+                <div>
+                  <p class="setting__label">
+                    <label for="radius">Delivery radius</label>
+                  </p>
+                  <p class="setting__hint">
+                    How far you’ll deliver, in kilometres.
+                  </p>
+                </div>
+                <input
+                  class="input input--sm"
+                  id="radius"
+                  type="number"
+                  min="0.5"
+                  max="15"
+                  step="0.5"
+                  inputmode="decimal"
+                />
+              </div>
+              <div class="setting">
+                <div>
+                  <p class="setting__label">Pickup available</p>
+                  <p class="setting__hint">
+                    Let customers collect their order from you.
+                  </p>
+                </div>
+                <label class="switch"
+                  ><input type="checkbox" role="switch" id="pickup" /><span
+                    class="switch__track"
+                    aria-hidden="true"
+                  ></span
+                  ><span class="sr-only">Pickup available</span></label
+                >
+              </div>
+            </section>
+
+            <section class="panel" aria-labelledby="profile-title">
+              <header class="panel__head">
+                <div>
+                  <p class="eyebrow">Profile</p>
+                  <h2 class="panel__title" id="profile-title">
+                    What customers see.
+                  </h2>
+                </div>
+              </header>
+              <div class="settings__fields">
+                <div class="field">
+                  <label for="p-name">Restaurant name</label
+                  ><input id="p-name" maxlength="60" autocomplete="off" />
+                </div>
+                <div class="field">
+                  <label for="p-cuisine">Cuisine</label
+                  ><input id="p-cuisine" maxlength="40" autocomplete="off" />
+                </div>
+                <div class="field">
+                  <label for="p-phone">Contact phone (optional)</label
+                  ><input
+                    id="p-phone"
+                    type="tel"
+                    maxlength="24"
+                    autocomplete="off"
+                  />
+                </div>
+                <div class="field settings__wide">
+                  <label for="p-desc">Short description</label
+                  ><textarea id="p-desc" maxlength="160"></textarea>
+                </div>
+              </div>
+            </section>
+
+            <section class="panel" aria-labelledby="hours-title">
+              <header class="panel__head">
+                <div>
+                  <p class="eyebrow">Opening hours</p>
+                  <h2 class="panel__title" id="hours-title">
+                    When you’re open.
+                  </h2>
+                </div>
+              </header>
+              <ul class="hours" id="hours" role="list"></ul>
+            </section>
+
+            <div class="settings__bar">
+              <p class="field-error" id="settings-error" role="alert"></p>
+              <button class="btn btn--primary" type="submit">
+                Save changes
+              </button>
+            </div>
+          </form>
+        </main>
+      </div>
+    </div>
+    <script type="module" src="js/workspace/settings.js"></script>
+  </body>
+</html>
