@@ -2,6 +2,7 @@
 import { store } from "../components.js";
 import { seedAccount, LIVE_ORDER } from "../data/account.js";
 import { deliveryRepo } from "./delivery-repo.js";
+import { orderRepo } from "./order-repo.js";
 
 const KEY = "foodie.account";
 const emit = () => window.dispatchEvent(new CustomEvent("account:change"));
@@ -81,7 +82,9 @@ export const accountRepo = {
 
   /** Previous orders, newest first. A delivered live order joins the list. */
   orders() {
-    const rows = [...read().orders];
+    const rows = [...read().orders, ...orderRepo.mine()].sort(
+      (a, b) => b.placedAt - a.placedAt,
+    );
     const delivered = deliveryRepo
       .history()
       .some((h) => h.id === LIVE_ORDER.id);
