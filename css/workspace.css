@@ -33,7 +33,7 @@
   height: 36px;
   flex: none;
   border-radius: 50%;
-  background: var(--c-accent);
+  background: var(--ws-accent, var(--c-accent));
   color: var(--c-ink);
   font-size: 0.78rem;
   font-weight: 700;
@@ -1191,4 +1191,15 @@
   .settings__bar .btn {
     width: 100%;
   }
+}
+
+.ws-body .eyebrow--accent {
+  color: var(--ws-accent, var(--c-accent));
+}
+.stat--aqua {
+  background: #e7f4ef;
+}
+.badge--neutral {
+  background: #e6eef0;
+  color: #2c5560;
 }
