@@ -262,11 +262,13 @@ function start() {
 
 function showDone(order, slot) {
   $("co-view").hidden = true;
-  $("done-id").textContent = order.id.replace("FD-", "FD-");
+  $("done-id").textContent = order.id;
   $("done-text").textContent = slot
     ? `${order.restaurant} will have it ready for ${slot}. We’ll update you as it moves.`
     : `${order.restaurant} is getting started. Expect it in about 30–40 minutes. We’ll update you as it moves.`;
   const done = $("co-done");
+  document.querySelector(".done__actions .btn--primary").href =
+    `track.html?id=${encodeURIComponent(order.id)}`;
   done.hidden = false;
   document.title = `Order ${order.id} confirmed — Foodie`;
   window.scrollTo({ top: 0, behavior: "smooth" });

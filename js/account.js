@@ -177,7 +177,7 @@ function showDashboard(user) {
           <h2 class="live-order__title" id="live-title">${copy.title}</h2>
           <p class="live-order__text">${escapeHtml(copy.text(o))}</p>
         </div>
-        <span class="live-order__time">${icon("bike")} At ${time}</span>
+        <a class="live-order__time" href="track.html?id=${encodeURIComponent(o.id)}">${icon("bike")} At ${time} · Track</a>
       </div>
       <ol class="live-steps">
         ${STEP_LABELS.map(
