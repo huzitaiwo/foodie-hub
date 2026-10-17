@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Checkout — Foodie</title>
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#1a3a44" />
+
+    <link
+      rel="shortcut icon"
+      href="assets/icons/favicon.png"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/checkout.css" />
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div data-component="header"></div>
+
+    <main id="main" class="checkout">
+      <div class="container">
+        <!-- Empty basket -->
+        <div id="co-empty" hidden></div>
+
+        <!-- Checkout -->
+        <div id="co-view" hidden>
+          <header class="section-head">
+            <div>
+              <p class="eyebrow">Nearly there</p>
+              <h1 class="h2 h2--xl">Checkout.</h1>
+            </div>
+            <a class="link-action" href="basket.html">← Back to basket</a>
+          </header>
+
+          <form class="checkout__grid" id="co-form" novalidate>
+            <div class="checkout__steps">
+              <section class="panel-card" aria-labelledby="s1">
+                <p class="eyebrow">1 · Where to</p>
+                <h2 class="panel-card__title" id="s1">Delivery address</h2>
+                <div
+                  class="choice-list"
+                  id="co-addresses"
+                  role="radiogroup"
+                  aria-label="Saved addresses"
+                ></div>
+                <div id="co-new-address" hidden>
+                  <div class="field">
+                    <label for="co-line">Address</label
+                    ><input
+                      id="co-line"
+                      maxlength="120"
+                      autocomplete="street-address"
+                    />
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="co-notes">Delivery instructions (optional)</label
+                  ><input
+                    id="co-notes"
+                    maxlength="120"
+                    autocomplete="off"
+                    placeholder="Gate code, leave with reception…"
+                  />
+                </div>
+                <p class="field-error" id="err-address" role="alert"></p>
+              </section>
+
+              <section class="panel-card" aria-labelledby="s2">
+                <p class="eyebrow">2 · When</p>
+                <h2 class="panel-card__title" id="s2">Delivery time</h2>
+                <div
+                  class="choice-list"
+                  role="radiogroup"
+                  aria-label="Delivery time"
+                >
+                  <label class="choice"
+                    ><input
+                      type="radio"
+                      name="when"
+                      value="asap"
+                      checked
+                    /><span
+                      >As soon as possible
+                      <small class="muted">· 30–40 min</small></span
+                    ></label
+                  >
+                  <label class="choice"
+                    ><input type="radio" name="when" value="later" /><span
+                      >Schedule for later</span
+                    ></label
+                  >
+                </div>
+                <div class="field" id="co-slot-field" hidden>
+                  <label for="co-slot">Choose a time</label>
+                  <select id="co-slot" class="input"></select>
+                </div>
+              </section>
+
+              <section class="panel-card" aria-labelledby="s3">
+                <p class="eyebrow">3 · Who</p>
+                <h2 class="panel-card__title" id="s3">Contact</h2>
+                <div class="form-grid">
+                  <div class="field">
+                    <label for="co-name">Name</label
+                    ><input
+                      id="co-name"
+                      autocomplete="name"
+                      maxlength="60"
+                      required
+                    />
+                  </div>
+                  <div class="field">
+                    <label for="co-phone">Mobile</label
+                    ><input
+                      id="co-phone"
+                      type="tel"
+                      autocomplete="tel"
+                      maxlength="24"
+                      required
+                    />
+                  </div>
+                </div>
+                <p class="field-hint">
+                  Your delivery partner may call if they can’t find you.
+                </p>
+                <p class="field-error" id="err-contact" role="alert"></p>
+              </section>
+
+              <section class="panel-card" aria-labelledby="s4">
+                <p class="eyebrow">4 · Pay</p>
+                <h2 class="panel-card__title" id="s4">Payment</h2>
+                <div
+                  class="choice-list"
+                  role="radiogroup"
+                  aria-label="Payment method"
+                >
+                  <label class="choice"
+                    ><input type="radio" name="pay" value="card" checked /><span
+                      >Card</span
+                    ></label
+                  >
+                  <label class="choice"
+                    ><input type="radio" name="pay" value="cash" /><span
+                      >Pay on delivery
+                      <small class="muted"
+                        >· cash or card to your delivery partner</small
+                      ></span
+                    ></label
+                  >
+                </div>
+                <div id="co-card">
+                  <div class="field">
+                    <label for="cc-name">Name on card</label
+                    ><input
+                      id="cc-name"
+                      autocomplete="cc-name"
+                      maxlength="60"
+                    />
+                  </div>
+                  <div class="field">
+                    <label for="cc-number">Card number</label
+                    ><input
+                      id="cc-number"
+                      inputmode="numeric"
+                      autocomplete="cc-number"
+                      maxlength="23"
+                      placeholder="1234 5678 9012 3456"
+                    />
+                  </div>
+                  <div class="form-grid">
+                    <div class="field">
+                      <label for="cc-exp">Expiry</label
+                      ><input
+                        id="cc-exp"
+                        inputmode="numeric"
+                        autocomplete="cc-exp"
+                        maxlength="5"
+                        placeholder="MM/YY"
+                      />
+                    </div>
+                    <div class="field">
+                      <label for="cc-cvc">CVC</label
+                      ><input
+                        id="cc-cvc"
+                        inputmode="numeric"
+                        autocomplete="cc-csc"
+                        maxlength="4"
+                        placeholder="123"
+                      />
+                    </div>
+                  </div>
+                  <p class="field-hint">
+                    Demo checkout: no payment is taken and card details are
+                    never stored.
+                  </p>
+                </div>
+                <p class="field-error" id="err-pay" role="alert"></p>
+              </section>
+            </div>
+
+            <aside class="summary" aria-labelledby="sum-title">
+              <h2 class="summary__title" id="sum-title">Your order</h2>
+              <p class="summary__from" id="sum-from"></p>
+              <ul class="summary__lines" id="sum-lines" role="list"></ul>
+              <dl class="summary__totals" id="sum-totals"></dl>
+              <button
+                class="btn btn--primary btn--block"
+                type="submit"
+                id="co-submit"
+              >
+                Place order
+              </button>
+              <p class="summary__fine">
+                By placing your order you agree to our terms. You can’t change
+                it once the kitchen accepts it.
+              </p>
+            </aside>
+          </form>
+        </div>
+
+        <!-- Confirmation -->
+        <section
+          class="done"
+          id="co-done"
+          aria-labelledby="done-title"
+          hidden
+          tabindex="-1"
+        >
+          <span class="done__check" aria-hidden="true"
+            ><svg class="icon"><use href="#i-check" /></svg
+          ></span>
+          <p class="eyebrow">Order #<span id="done-id"></span></p>
+          <h1 class="h2 h2--xl" id="done-title">
+            Thank you. It’s on its way to the kitchen.
+          </h1>
+          <p class="done__text" id="done-text"></p>
+          <div class="done__actions">
+            <a class="btn btn--primary" href="account.html">Track your order</a>
+            <a class="btn btn--outline" href="restaurants.html"
+              >Keep browsing</a
+            >
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <div data-component="footer"></div>
+    <script type="module" src="js/checkout.js"></script>
+  </body>
+</html>
