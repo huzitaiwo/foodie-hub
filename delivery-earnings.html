@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Earnings — Delivery partner workspace · Foodie</title>
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#1a3a44" />
+
+    <link
+      rel="shortcut icon"
+      href="assets/icons/favicon.png"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/workspace.css" />
+    <link rel="stylesheet" href="css/delivery.css" />
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
+  </head>
+  <body
+    class="ws-body ws-body--delivery"
+    data-workspace="delivery"
+    data-active="earnings"
+  >
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="ws" id="ws">
+      <div data-component="ws-sidebar"></div>
+      <div class="ws__body">
+        <div data-component="ws-topbar"></div>
+        <main id="main" class="ws-main">
+          <header class="ws-head">
+            <div>
+              <p class="eyebrow" data-status-eyebrow></p>
+              <h1 class="display ws-title">Earnings, clearly.</h1>
+              <p class="ws-sub" data-status-sub></p>
+            </div>
+            <button
+              class="btn btn--primary"
+              type="button"
+              data-status-btn
+            ></button>
+          </header>
+
+          <div class="ws-split ws-split--earn">
+            <section class="earn-card" aria-labelledby="week-label">
+              <p class="eyebrow eyebrow--accent" id="week-label">This week</p>
+              <p class="earn-card__value" id="week"></p>
+              <p class="earn-card__note" id="week-note"></p>
+              <dl class="earn-card__tile">
+                <dt>Next payout</dt>
+                <dd id="payout"></dd>
+              </dl>
+            </section>
+
+            <section class="panel" aria-labelledby="history-title">
+              <header class="panel__head">
+                <div>
+                  <p class="eyebrow">Delivery history</p>
+                  <h2 class="panel__title" id="history-title">
+                    This week, at a glance.
+                  </h2>
+                </div>
+              </header>
+              <ul class="history" id="history" role="list"></ul>
+            </section>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script type="module" src="js/delivery/earnings.js"></script>
+  </body>
+</html>
