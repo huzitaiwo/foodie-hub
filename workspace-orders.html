@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Orders — Restaurant workspace · Foodie</title>
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#1a3a44" />
+
+    <link
+      rel="shortcut icon"
+      href="assets/icons/favicon.png"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/workspace.css" />
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
+  </head>
+  <body class="ws-body" data-active="orders">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="ws" id="ws">
+      <div data-component="ws-sidebar"></div>
+      <div class="ws__body">
+        <div data-component="ws-topbar"></div>
+        <main id="main" class="ws-main">
+          <h1 class="sr-only">Orders</h1>
+          <section class="panel" aria-labelledby="board-title">
+            <header class="panel__head">
+              <div>
+                <p class="eyebrow">Incoming orders</p>
+                <h2 class="panel__title" id="board-title">The order board.</h2>
+              </div>
+              <button class="text-link-btn" type="button" id="sort-btn">
+                Sort by time<span class="sr-only" id="sort-state"></span>
+              </button>
+            </header>
+            <ul class="order-list" id="order-list" role="list"></ul>
+          </section>
+        </main>
+      </div>
+    </div>
+    <script type="module" src="js/workspace/orders.js"></script>
+  </body>
+</html>

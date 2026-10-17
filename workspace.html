@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Overview — Restaurant workspace · Foodie</title>
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#1a3a44" />
+
+    <link
+      rel="shortcut icon"
+      href="assets/icons/favicon.png"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/workspace.css" />
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
+  </head>
+  <body class="ws-body" data-active="overview">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="ws" id="ws">
+      <div data-component="ws-sidebar"></div>
+      <div class="ws__body">
+        <div data-component="ws-topbar"></div>
+        <main id="main" class="ws-main">
+          <header class="ws-head">
+            <div>
+              <p class="eyebrow">A good service starts here</p>
+              <h1 class="display ws-title" id="greeting"></h1>
+              <p class="ws-sub" id="today-line"></p>
+            </div>
+            <a class="btn btn--primary" href="workspace-orders.html"
+              >View incoming orders</a
+            >
+          </header>
+
+          <section
+            class="stats"
+            id="stats"
+            aria-label="Today at a glance"
+          ></section>
+
+          <div class="ws-split">
+            <section class="panel" aria-labelledby="attn-title">
+              <header class="panel__head">
+                <div>
+                  <p class="eyebrow">Requires attention</p>
+                  <h2 class="panel__title" id="attn-title">
+                    Keep the pass moving.
+                  </h2>
+                </div>
+                <a class="panel__link" href="workspace-orders.html"
+                  >All orders</a
+                >
+              </header>
+              <ul class="order-list" id="attn-list" role="list"></ul>
+            </section>
+
+            <aside class="pulse" aria-labelledby="pulse-title">
+              <p class="eyebrow eyebrow--accent">Service pulse</p>
+              <h2 class="pulse__title" id="pulse-title">
+                Your kitchen is in rhythm.
+              </h2>
+              <p class="pulse__text">
+                The current queue has capacity. Keep your delivery pace steady
+                and make the final plate count.
+              </p>
+              <dl class="pulse__tiles">
+                <div class="pulse__tile">
+                  <dt>Acceptance</dt>
+                  <dd id="acceptance"></dd>
+                </div>
+                <div class="pulse__tile">
+                  <dt>On time</dt>
+                  <dd id="on-time"></dd>
+                </div>
+              </dl>
+            </aside>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script type="module" src="js/workspace/overview.js"></script>
+  </body>
+</html>

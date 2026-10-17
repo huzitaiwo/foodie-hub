@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Menu management — Restaurant workspace · Foodie</title>
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#1a3a44" />
+
+    <link
+      rel="shortcut icon"
+      href="assets/icons/favicon.png"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/workspace.css" />
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
+  </head>
+  <body class="ws-body" data-active="menu">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="ws" id="ws">
+      <div data-component="ws-sidebar"></div>
+      <div class="ws__body">
+        <div data-component="ws-topbar"></div>
+        <main id="main" class="ws-main">
+          <header class="ws-head">
+            <div>
+              <p class="eyebrow">Your menu, beautifully run</p>
+              <h1 class="display ws-title">Menu management.</h1>
+              <p class="ws-sub">
+                Make small changes that customers can see immediately.
+              </p>
+            </div>
+            <button class="btn btn--primary" type="button" data-act="add">
+              <svg class="icon" aria-hidden="true"><use href="#i-plus" /></svg>
+              Add item
+            </button>
+          </header>
+
+          <div class="table-card" id="table-card">
+            <div class="table-scroll">
+              <table class="data-table">
+                <caption class="sr-only">
+                  Menu items
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Item</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Controls</th>
+                  </tr>
+                </thead>
+                <tbody id="menu-body"></tbody>
+              </table>
+            </div>
+          </div>
+          <div id="menu-empty" hidden></div>
+        </main>
+      </div>
+    </div>
+
+    <dialog class="dialog" id="item-dialog" aria-labelledby="item-title">
+      <form class="dialog__inner" id="item-form" novalidate>
+        <h2 class="dialog__title" id="item-title">Add item</h2>
+        <div class="field">
+          <label for="item-name">Name</label
+          ><input
+            id="item-name"
+            name="name"
+            maxlength="60"
+            autocomplete="off"
+            required
+          />
+        </div>
+        <div class="field">
+          <label for="item-category">Category</label>
+          <input
+            id="item-category"
+            name="category"
+            list="category-list"
+            maxlength="40"
+            autocomplete="off"
+            required
+          />
+          <datalist id="category-list"></datalist>
+        </div>
+        <div class="field">
+          <label for="item-price">Price (£)</label
+          ><input
+            id="item-price"
+            name="price"
+            type="number"
+            min="0.01"
+            step="0.01"
+            inputmode="decimal"
+            required
+          />
+        </div>
+        <div class="field">
+          <label for="item-desc">Description (optional)</label
+          ><textarea
+            id="item-desc"
+            name="description"
+            maxlength="200"
+          ></textarea>
+        </div>
+        <p class="field-error" id="item-error" role="alert"></p>
+        <div class="dialog__actions">
+          <button class="btn btn--outline" type="button" data-close>
+            Cancel
+          </button>
+          <button class="btn btn--primary" type="submit">Save item</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="dialog" id="delete-dialog" aria-labelledby="delete-title">
+      <form class="dialog__inner" method="dialog">
+        <h2 class="dialog__title" id="delete-title">Delete this item?</h2>
+        <p class="dialog__text" id="delete-text"></p>
+        <div class="dialog__actions">
+          <button class="btn btn--outline" value="cancel">Keep item</button>
+          <button class="btn btn--primary" value="confirm">Delete item</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script type="module" src="js/workspace/menu.js"></script>
+  </body>
+</html>
