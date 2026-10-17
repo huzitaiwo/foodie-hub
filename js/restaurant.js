@@ -1,15 +1,34 @@
 import { initLayout, observe } from "./layout.js";
 import { restaurantRepo } from "./services/restaurant-repo.js";
 import { menuRepo } from "./services/menu-repo.js";
-import { basketService } from "./services/basket.js";
+import * as basketModule from "./services/basket.js";
 import { emptyState, escapeHtml, icon, store } from "./components.js";
 import { formatPrice } from "./utils/format.js";
 import { toast } from "./ui/toast.js";
 
 initLayout();
+
+// Try the other image extensions before giving up (error events don't bubble, so listen in the capture phase).
+const EXT = ["jpg", "png", "webp", "jpeg"];
+document.addEventListener(
+  "error",
+  (e) => {
+    const img = e.target;
+    if (img.tagName !== "IMG" || !img.dataset.base) return;
+    const next = +img.dataset.try + 1;
+    if (next < EXT.length) {
+      img.dataset.try = next;
+      img.src = `${img.dataset.base}.${EXT[next]}`;
+    } else img.remove();
+  },
+  true,
+);
 const $ = (id) => document.getElementById(id);
 const params = new URLSearchParams(location.search);
 const id = params.get("id");
+const basketService =
+  Object.values(basketModule).find((v) => typeof v?.add === "function") ??
+  basketModule;
 
 /* ---- Restaurant fields: tolerant of seed naming ---- */
 const pick = (o, ...keys) =>
@@ -23,9 +42,7 @@ const meta = (r) => ({
   rating: pick(r, "rating"),
   eta: pick(r, "eta", "etaLabel", "deliveryTime"),
   fee: pick(r, "deliveryFeePence", "feePence"),
-  image:
-    pick(r, "image", "cover", "img", "photo") ||
-    `images/restaurants/${r.id}.jpg`,
+  image: pick(r, "image", "cover", "img", "photo") || "",
 });
 
 /* ---- Favourites (stored as an array of ids) ---- */
@@ -77,7 +94,11 @@ async function start(r) {
   $("rest-head").innerHTML = `
     <div class="container">
       <div class="rest-hero__card">
-        <img class="rest-hero__img" src="${escapeHtml(r.image)}" alt="" onerror="this.remove()">
+                ${
+                  r.image
+                    ? `<img class="rest-hero__img" src="${escapeHtml(r.image)}" alt="" onerror="this.remove()">`
+                    : `<img class="rest-hero__img" src="assets/images/${escapeHtml(r.id)}.jpg" data-base="assets/images/${escapeHtml(r.id)}" data-try="0" alt="">`
+                }
         <div class="rest-hero__top">
           <button class="icon-btn" type="button" id="fav" aria-pressed="${favs().includes(r.id)}" aria-label="Save ${escapeHtml(r.name)} to favourites">${icon("heart")}</button>
         </div>
@@ -96,6 +117,10 @@ async function start(r) {
   /* ---- Menu ---- */
   const sections = await menuRepo.forRestaurant(r.id);
   const items = new Map(sections.flatMap((s) => s.items).map((i) => [i.id, i]));
+  const dishImg = (i) =>
+    i.image
+      ? `<img src="${escapeHtml(i.image)}" alt="" loading="lazy" onerror="this.remove()">`
+      : "";
 
   $("menu-nav").hidden = false;
   $("menu-nav").innerHTML = sections
@@ -125,7 +150,7 @@ async function start(r) {
                 <button class="btn btn--primary btn--sm" type="button" data-add="${escapeHtml(i.id)}">${i.modifiers.length ? "Customise" : "Add"}<span class="sr-only"> ${escapeHtml(i.name)}</span></button>
               </div>
             </div>
-            <div class="dish__media" aria-hidden="true">${icon("utensils")}<img src="images/menu/${escapeHtml(i.id)}.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+            <div class="dish__media" aria-hidden="true">${icon("utensils")}<img src="assets/images/${escapeHtml(i.id)}.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
           </li>`,
           )
           .join("")}

@@ -1,12 +1,15 @@
 import { initLayout } from "./layout.js";
 import { authService } from "./services/auth.js";
 import { accountRepo } from "./services/account-repo.js";
-import { basketService } from "./services/basket.js";
+import * as basketModule from "./services/basket.js";
 import { orderRepo } from "./services/order-repo.js";
 import { emptyState, escapeHtml, store } from "./components.js";
 import { formatPrice } from "./utils/format.js";
 import { toast } from "./ui/toast.js";
 
+const basketService =
+  Object.values(basketModule).find((v) => typeof v?.add === "function") ??
+  basketModule;
 initLayout();
 const $ = (id) => document.getElementById(id);
 const session = await authService.requireSession();
