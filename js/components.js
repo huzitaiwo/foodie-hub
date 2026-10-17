@@ -66,7 +66,7 @@ const logo = `<a class="logo" href="index.html" aria-label="Foodie home"><span c
 
 const navLinks = [
   { href: "restaurants.html", label: "Discover" },
-  { href: "partners.html", label: "For restaurants" },
+  { href: "workspace.html", label: "For restaurants" },
   { href: "deliver.html", label: "Deliver with us" },
 ];
 
