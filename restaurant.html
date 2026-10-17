@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Restaurant — Foodie</title>
+    <meta
+      name="description"
+      content="Browse the menu and order for delivery."
+    />
+    <meta name="theme-color" content="#1a3a44" />
+
+    <link
+      rel="shortcut icon"
+      href="assets/icons/favicon.png"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/restaurant.css" />
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#menu">Skip to menu</a>
+    <div data-component="header"></div>
+
+    <main id="main">
+      <div id="rest-head" class="rest-hero" aria-live="polite">
+        <div class="container">
+          <div
+            class="skeleton"
+            style="height: 240px; border-radius: 24px"
+          ></div>
+        </div>
+      </div>
+
+      <div class="container">
+        <p class="reorder-note" id="reorder-note" hidden>
+          Welcome back. Pick your favourites and they’ll be in your basket in a
+          tap.
+        </p>
+        <nav
+          class="menu-nav"
+          id="menu-nav"
+          aria-label="Menu sections"
+          hidden
+        ></nav>
+        <div class="menu" id="menu"></div>
+      </div>
+    </main>
+
+    <!-- Item customisation -->
+    <dialog
+      class="dialog dialog--item"
+      id="item-dialog"
+      aria-labelledby="item-title"
+    >
+      <form class="dialog__inner" id="item-form" novalidate>
+        <div class="item-dialog__head">
+          <div>
+            <h2 class="dialog__title" id="item-title"></h2>
+            <p class="dialog__text" id="item-desc"></p>
+          </div>
+          <button
+            class="icon-btn"
+            type="button"
+            id="item-close"
+            aria-label="Close"
+          >
+            <svg class="icon" aria-hidden="true"><use href="#i-x" /></svg>
+          </button>
+        </div>
+        <div id="item-groups"></div>
+        <div class="field">
+          <label for="item-note">Note for the kitchen (optional)</label
+          ><input
+            id="item-note"
+            maxlength="120"
+            autocomplete="off"
+            placeholder="Allergies, no onions…"
+          />
+        </div>
+        <p class="field-error" id="item-error" role="alert"></p>
+        <div class="dialog__actions item-dialog__actions">
+          <div class="qty" role="group" aria-label="Quantity">
+            <button
+              type="button"
+              id="item-minus"
+              aria-label="Decrease quantity"
+            >
+              −
+            </button>
+            <span id="item-qty" aria-live="polite">1</span>
+            <button type="button" id="item-plus" aria-label="Increase quantity">
+              +
+            </button>
+          </div>
+          <button class="btn btn--primary" type="submit" id="item-add">
+            Add to basket
+          </button>
+        </div>
+      </form>
+    </dialog>
+
+    <!-- Different restaurant in basket -->
+    <dialog
+      class="dialog"
+      id="conflict-dialog"
+      aria-labelledby="conflict-title"
+    >
+      <form class="dialog__inner" method="dialog">
+        <h2 class="dialog__title" id="conflict-title">Start a new basket?</h2>
+        <p class="dialog__text" id="conflict-text"></p>
+        <div class="dialog__actions">
+          <button class="btn btn--outline" value="cancel">Cancel</button>
+          <a class="btn btn--outline" href="basket.html"
+            >Keep &amp; view basket</a
+          >
+          <button class="btn btn--primary" value="replace">
+            Start new basket
+          </button>
+        </div>
+      </form>
+    </dialog>
+
+    <div data-component="footer"></div>
+    <script type="module" src="js/restaurant.js"></script>
+  </body>
+</html>
