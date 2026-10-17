@@ -95,6 +95,7 @@ export const deliveryRepo = {
         return { ...d, status: "delivered" };
       }
       d.status = flow.next;
+      d.updatedAt = Date.now();
       write(s);
       return d;
     },
