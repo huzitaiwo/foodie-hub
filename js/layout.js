@@ -1,6 +1,7 @@
 // Behaviour shared by every page. Call initLayout() once at the top of each page script.
 import { mountLayout, store } from "./components.js";
 import { basket } from "./services/basket.js";
+import "./services/sync.js";
 
 const favourites = new Set(store.get("foodie.favourites", []));
 export const isFavourite = (id) => favourites.has(id);
