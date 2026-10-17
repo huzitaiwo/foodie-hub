@@ -64,34 +64,6 @@
   color: var(--c-accent);
 }
 
-.icon-btn {
-  display: grid;
-  place-items: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.92);
-  color: var(--c-ink);
-  border: 0;
-  cursor: pointer;
-  transition:
-    transform var(--t-fast),
-    background var(--t-fast);
-}
-.icon-btn:hover {
-  transform: scale(1.06);
-}
-.icon-btn[aria-pressed="true"] {
-  background: var(--c-accent);
-}
-.icon-btn[aria-pressed="true"] .icon {
-  fill: currentColor;
-}
-.dialog .icon-btn {
-  background: #f1efe6;
-  flex: none;
-}
-
 .reorder-note {
   margin: 0 0 var(--s-4);
   padding: 0.8rem 1.1rem;
@@ -236,21 +208,6 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-.tag {
-  display: inline-block;
-  padding: 0.15rem 0.55rem;
-  border-radius: var(--r-pill);
-  background: var(--c-mint);
-  color: var(--c-green);
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-.tag--hot {
-  background: var(--c-accent);
-  color: var(--c-ink);
 }
 
 /* ---------- Item dialog ---------- */

@@ -48,54 +48,9 @@
   color: #fff;
 }
 
-/* ---------- Cards ---------- */
-.panel-card {
-  padding: 24px;
-  background: var(--c-surface);
-  border: 1px solid var(--c-border);
-  border-radius: var(--r-xl);
-  box-shadow: var(--shadow-sm);
-  animation: card-in 0.4s var(--ease) both;
-}
-.panel-card .eyebrow {
-  margin-bottom: 0.3rem;
-  font-size: 0.66rem;
-}
-.panel-card__title {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(1.7rem, 2.6vw, 2.1rem);
-  letter-spacing: -0.035em;
-  line-height: 1.1;
-  color: var(--c-ink);
-  margin-bottom: var(--s-4);
-}
-.panel-card__lead {
-  margin: -0.5rem 0 var(--s-5);
-  color: var(--c-text-2);
-  font-size: 0.95rem;
-}
-@keyframes card-in {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-}
-
 .account .field input {
   padding: 0.85rem 1.1rem;
   border-radius: var(--r-pill);
-}
-.form-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--s-4);
-  margin-bottom: var(--s-5);
-}
-.field-hint {
-  margin: calc(var(--s-3) * -1) 0 var(--s-4);
-  font-size: 0.82rem;
-  color: var(--c-muted);
 }
 .field-error {
   margin-bottom: var(--s-3);
@@ -118,19 +73,6 @@
 .link-action--add {
   margin-top: var(--s-4);
   font-size: 0.92rem;
-}
-.tag {
-  display: inline-block;
-  margin-left: 0.6rem;
-  padding: 0.15rem 0.55rem;
-  border-radius: var(--r-pill);
-  background: var(--c-mint);
-  color: var(--c-green);
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  vertical-align: middle;
 }
 
 /* ---------- Live order ---------- */
@@ -448,9 +390,6 @@
   }
   .form-grid {
     grid-template-columns: 1fr;
-  }
-  .panel-card {
-    padding: 20px 16px;
   }
   .pref {
     padding: 16px;
