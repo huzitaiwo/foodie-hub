@@ -20,7 +20,7 @@ export const restaurants = [
     status: "open",
     reviewCount: 0,
     featured: true,
-    image: "images/sunroom-kitchen.jpg",
+    image: "assets/images/sunroom-kitchen.jpg",
     imageAlt: "Seasonal Mediterranean plates and shared bowls",
   },
   {
@@ -34,7 +34,7 @@ export const restaurants = [
     status: "open",
     reviewCount: 0,
     featured: true,
-    image: "images/maki-house.jpg",
+    image: "assets/images/maki-house.png",
     imageAlt: "A chef plating seared salmon with asparagus",
   },
   {
@@ -48,7 +48,7 @@ export const restaurants = [
     status: "preorder",
     reviewCount: 0,
     featured: true,
-    image: "images/field-and-flame.jpg",
+    image: "assets/images/field-and-flame.png",
     imageAlt: "A stacked cheeseburger on a dark plate",
   },
   {
@@ -62,7 +62,7 @@ export const restaurants = [
     status: "open",
     reviewCount: 0,
     featured: true,
-    image: "images/casa-cielo.jpg",
+    image: "assets/images/casa-cielo.jpg",
     imageAlt: "Tacos and sushi-style shared plates",
   },
 ];
