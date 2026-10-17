@@ -6,10 +6,13 @@ import {
   seedOrders,
   seedMenu,
   seedStats,
+  seedSettings,
 } from "../data/workspace.js";
+import { buildAnalytics, regulars } from "../data/analytics.js";
 
 const ORDERS_KEY = "foodie.ws.orders";
 const MENU_KEY = "foodie.ws.menu";
+const SETTINGS_KEY = "foodie.ws.settings";
 const emit = (name) => window.dispatchEvent(new CustomEvent(name));
 
 export const ORDER_FLOW = {
@@ -68,7 +71,11 @@ export const workspaceRepo = {
   restaurant,
 
   stats() {
-    return { ...seedStats, needAttention: this.orders.active().length };
+    return {
+      ...seedStats,
+      prepTargetMinutes: this.settings.get().prepMinutes,
+      needAttention: this.orders.active().length,
+    };
   },
 
   orders: {
@@ -124,4 +131,14 @@ export const workspaceRepo = {
       writeMenu(readMenu().filter((r) => r.id !== id));
     },
   },
+  settings: {
+    get: () => ({ ...seedSettings, ...store.get(SETTINGS_KEY, {}) }),
+    save(next) {
+      store.set(SETTINGS_KEY, next);
+      emit("workspace:settings");
+    },
+  },
+
+  analytics: (range) => buildAnalytics(range, readMenu()),
+  regulars: () => regulars,
 };

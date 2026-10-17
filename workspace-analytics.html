@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Analytics — Restaurant workspace · Foodie</title>
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#1a3a44" />
+
+    <link
+      rel="shortcut icon"
+      href="assets/icons/favicon.png"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/workspace.css" />
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
+  </head>
+  <body class="ws-body" data-active="analytics">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="ws" id="ws">
+      <div data-component="ws-sidebar"></div>
+      <div class="ws__body">
+        <div data-component="ws-topbar"></div>
+        <main id="main" class="ws-main">
+          <header class="ws-head">
+            <div>
+              <p class="eyebrow">How service is going</p>
+              <h1 class="display ws-title">Analytics.</h1>
+              <p class="ws-sub">
+                Demo figures, so you can see how the dashboard reads once real
+                orders flow in.
+              </p>
+            </div>
+          </header>
+
+          <div class="toolbar">
+            <div
+              class="segmented"
+              role="radiogroup"
+              aria-label="Date range"
+              id="range-control"
+            ></div>
+          </div>
+
+          <section class="stats" id="stats" aria-label="Summary"></section>
+
+          <section class="panel" aria-labelledby="sales-title">
+            <header class="panel__head">
+              <div>
+                <p class="eyebrow">Performance</p>
+                <h2 class="panel__title" id="sales-title">Sales over time.</h2>
+              </div>
+              <div
+                class="segmented"
+                role="radiogroup"
+                aria-label="Measure"
+                id="metric-control"
+              >
+                <label
+                  ><input
+                    type="radio"
+                    name="metric"
+                    value="sales"
+                    checked
+                  /><span>Sales</span></label
+                >
+                <label
+                  ><input type="radio" name="metric" value="orders" /><span
+                    >Orders</span
+                  ></label
+                >
+              </div>
+            </header>
+            <div id="chart"></div>
+            <details class="chart-table">
+              <summary>View as table</summary>
+              <div class="table-scroll">
+                <table
+                  class="data-table data-table--wide"
+                  id="chart-table"
+                ></table>
+              </div>
+            </details>
+          </section>
+
+          <div class="ws-grid-2">
+            <section class="panel" aria-labelledby="dishes-title">
+              <header class="panel__head">
+                <div>
+                  <p class="eyebrow">What sells</p>
+                  <h2 class="panel__title" id="dishes-title">Top dishes.</h2>
+                </div>
+              </header>
+              <ul class="hbars" id="dishes" role="list"></ul>
+            </section>
+            <section class="panel" aria-labelledby="cats-title">
+              <header class="panel__head">
+                <div>
+                  <p class="eyebrow">Where money comes from</p>
+                  <h2 class="panel__title" id="cats-title">
+                    Revenue by category.
+                  </h2>
+                </div>
+              </header>
+              <ul class="hbars" id="categories" role="list"></ul>
+            </section>
+          </div>
+
+          <div class="ws-split">
+            <section class="panel" aria-labelledby="regulars-title">
+              <header class="panel__head">
+                <div>
+                  <p class="eyebrow">Your people</p>
+                  <h2 class="panel__title" id="regulars-title">Regulars.</h2>
+                </div>
+              </header>
+              <div class="table-scroll">
+                <table class="data-table data-table--wide">
+                  <caption class="sr-only">
+                    Most frequent customers
+                  </caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">Customer</th>
+                      <th scope="col">Orders</th>
+                      <th scope="col">Total spend</th>
+                      <th scope="col">Last order</th>
+                      <th scope="col">Favourite</th>
+                    </tr>
+                  </thead>
+                  <tbody id="regulars"></tbody>
+                </table>
+              </div>
+            </section>
+
+            <section class="panel mix" aria-labelledby="mix-title">
+              <header class="panel__head">
+                <div>
+                  <p class="eyebrow">Retention</p>
+                  <h2 class="panel__title" id="mix-title">Repeat vs new.</h2>
+                </div>
+              </header>
+              <div class="meter" id="meter" role="img"></div>
+              <ul class="legend" role="list">
+                <li>
+                  <span
+                    class="legend__key legend__key--repeat"
+                    aria-hidden="true"
+                  ></span
+                  >Repeat <strong id="mix-repeat"></strong>
+                </li>
+                <li>
+                  <span
+                    class="legend__key legend__key--new"
+                    aria-hidden="true"
+                  ></span
+                  >New <strong id="mix-new"></strong>
+                </li>
+              </ul>
+              <p class="mix__note">
+                Repeat customers have ordered from you more than once.
+              </p>
+            </section>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script type="module" src="js/workspace/analytics.js"></script>
+  </body>
+</html>

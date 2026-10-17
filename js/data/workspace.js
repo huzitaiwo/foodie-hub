@@ -1,5 +1,5 @@
 // Demo data for the restaurant workspace. Same shapes as the Firestore collections:
-// restaurants/{id}/orders, restaurants/{id}/menu. Money is stored in pence.
+// restaurants/{id}/orders, restaurants/{id}/menu, restaurants/{id}/settings. Money is stored in pence.
 export const restaurant = {
   id: "sunroom-kitchen",
   name: "Sunroom Kitchen",
@@ -12,7 +12,6 @@ export const seedStats = {
   salesDeltaPct: 16.4,
   ordersToday: 42,
   prepMinutes: 18,
-  prepTargetMinutes: 22,
   flow: "Good",
   acceptancePct: 98,
   onTimePct: 94,
@@ -21,21 +20,21 @@ export const seedStats = {
 export const seedOrders = [
   {
     id: "FD-1052",
-    customer: "Amina R.",
+    customer: "Olanma",
     status: "new",
     minutesAgo: 7,
     items: [{ name: "Garden tahini bowl", qty: 2 }],
   },
   {
     id: "FD-1051",
-    customer: "Kai L.",
+    customer: "Faridah",
     status: "preparing",
     minutesAgo: 12,
     items: [{ name: "Crisp sea bass", qty: 3 }],
   },
   {
     id: "FD-1049",
-    customer: "Daisy S.",
+    customer: "Lola",
     status: "ready",
     minutesAgo: 18,
     items: [{ name: "Flatbread", qty: 1 }],
@@ -68,3 +67,25 @@ export const seedMenu = [
     description: "",
   },
 ];
+
+export const seedSettings = {
+  accepting: true,
+  prepMinutes: 22,
+  radiusKm: 3,
+  pickup: true,
+  profile: {
+    name: "Sunroom Kitchen",
+    cuisine: "Mediterranean",
+    phone: "",
+    description: "Seasonal plates, bright flavours.",
+  },
+  hours: {
+    mon: { open: true, from: "10:00", to: "22:00" },
+    tue: { open: true, from: "10:00", to: "22:00" },
+    wed: { open: true, from: "10:00", to: "22:00" },
+    thu: { open: true, from: "10:00", to: "22:00" },
+    fri: { open: true, from: "10:00", to: "23:00" },
+    sat: { open: true, from: "10:00", to: "23:00" },
+    sun: { open: true, from: "11:00", to: "21:00" },
+  },
+};

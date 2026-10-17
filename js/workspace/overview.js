@@ -21,7 +21,7 @@ const dayMonth = new Intl.DateTimeFormat("en-GB", {
 
 $("greeting").textContent = `${greet}, ${workspaceRepo.restaurant.short}.`;
 $("today-line").textContent =
-  `${weekday}, ${dayMonth} · You are accepting orders.`;
+  `${weekday}, ${dayMonth} · ${workspaceRepo.settings.get().accepting ? "You are accepting orders." : "Orders are paused."}`;
 
 function render() {
   const s = workspaceRepo.stats();
