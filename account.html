@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Your account — Foodie</title>
+    <meta
+      name="description"
+      content="Your orders, details, saved addresses and preferences."
+    />
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#1a3a44" />
+
+    <link
+      rel="shortcut icon"
+      href="assets/icons/favicon.png"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/account.css" />
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div data-component="header"></div>
+
+    <main id="main" class="account">
+      <div class="container">
+        <!-- Sign in / create account (only when Firebase is configured and nobody is signed in) -->
+        <section
+          class="auth"
+          id="auth-view"
+          aria-labelledby="auth-title"
+          hidden
+        >
+          <p class="eyebrow" id="auth-eyebrow">Welcome back</p>
+          <h1 class="h2 h2--xl" id="auth-title">Sign in.</h1>
+          <form class="auth__form" id="auth-form" novalidate>
+            <div class="field" id="auth-name-field" hidden>
+              <label for="auth-name">Your name</label
+              ><input id="auth-name" autocomplete="name" maxlength="60" />
+            </div>
+            <div class="field">
+              <label for="auth-email">Email</label
+              ><input
+                id="auth-email"
+                type="email"
+                autocomplete="email"
+                required
+              />
+            </div>
+            <div class="field">
+              <label for="auth-password">Password</label
+              ><input
+                id="auth-password"
+                type="password"
+                autocomplete="current-password"
+                minlength="6"
+                required
+              />
+            </div>
+            <p class="field-error" id="auth-error" role="alert"></p>
+            <button
+              class="btn btn--primary btn--block"
+              type="submit"
+              id="auth-submit"
+            >
+              Sign in
+            </button>
+          </form>
+          <p class="auth__switch">
+            <span id="auth-switch-text">New to Foodie?</span>
+            <button class="link-action" type="button" id="auth-switch">
+              Create an account
+            </button>
+          </p>
+        </section>
+
+        <!-- Dashboard -->
+        <div id="dash-view" hidden>
+          <header class="section-head">
+            <div>
+              <p class="eyebrow">Hello, <span id="hello-name"></span></p>
+              <h1 class="h2 h2--xl">Your good things.</h1>
+            </div>
+            <a
+              class="btn btn--primary"
+              id="order-again-top"
+              href="restaurants.html"
+              >Order again</a
+            >
+          </header>
+
+          <div class="account__grid">
+            <nav class="account-nav" aria-label="Account">
+              <ul role="list">
+                <li>
+                  <a href="account.html" data-tab="orders"
+                    ><svg class="icon" aria-hidden="true">
+                      <use href="#i-box" /></svg
+                    >Orders</a
+                  >
+                </li>
+                <li>
+                  <a href="account.html?tab=profile" data-tab="profile"
+                    ><svg class="icon" aria-hidden="true">
+                      <use href="#i-user" /></svg
+                    >Profile</a
+                  >
+                </li>
+                <li>
+                  <a href="account.html?tab=addresses" data-tab="addresses"
+                    ><svg class="icon" aria-hidden="true">
+                      <use href="#i-pin" /></svg
+                    >Addresses</a
+                  >
+                </li>
+                <li>
+                  <a href="account.html?tab=preferences" data-tab="preferences"
+                    ><svg class="icon" aria-hidden="true">
+                      <use href="#i-sparkle" /></svg
+                    >Preferences</a
+                  >
+                </li>
+              </ul>
+            </nav>
+
+            <div class="account__panels">
+              <!-- Orders -->
+              <section id="panel-orders" aria-label="Orders">
+                <div id="live"></div>
+                <h2 class="account__sub" id="previous-title">
+                  Previous orders
+                </h2>
+                <ul
+                  class="past-orders"
+                  id="orders-list"
+                  role="list"
+                  aria-labelledby="previous-title"
+                ></ul>
+              </section>
+
+              <!-- Profile -->
+              <section
+                class="panel-card"
+                id="panel-profile"
+                aria-labelledby="profile-title"
+                hidden
+              >
+                <p class="eyebrow">Personal details</p>
+                <h2 class="panel-card__title" id="profile-title">Profile</h2>
+                <form id="profile-form" novalidate>
+                  <div class="form-grid">
+                    <div class="field">
+                      <label for="p-first">First name</label
+                      ><input
+                        id="p-first"
+                        autocomplete="given-name"
+                        maxlength="40"
+                        required
+                      />
+                    </div>
+                    <div class="field">
+                      <label for="p-last">Last name</label
+                      ><input
+                        id="p-last"
+                        autocomplete="family-name"
+                        maxlength="40"
+                      />
+                    </div>
+                    <div class="field">
+                      <label for="p-email">Email</label
+                      ><input
+                        id="p-email"
+                        type="email"
+                        autocomplete="email"
+                        required
+                      />
+                    </div>
+                    <div class="field">
+                      <label for="p-mobile">Mobile</label
+                      ><input
+                        id="p-mobile"
+                        type="tel"
+                        autocomplete="tel"
+                        maxlength="24"
+                      />
+                    </div>
+                  </div>
+                  <p class="field-hint" id="email-hint" hidden>
+                    Your email is tied to your sign-in, so it can’t be changed
+                    here.
+                  </p>
+                  <p class="field-error" id="profile-error" role="alert"></p>
+                  <button class="btn btn--primary" type="submit">
+                    Save changes
+                  </button>
+                </form>
+              </section>
+
+              <!-- Addresses -->
+              <section
+                class="panel-card"
+                id="panel-addresses"
+                aria-labelledby="addresses-title"
+                hidden
+              >
+                <p class="eyebrow">Deliver with confidence</p>
+                <h2 class="panel-card__title" id="addresses-title">
+                  Saved addresses
+                </h2>
+                <ul class="addresses" id="address-list" role="list"></ul>
+                <button
+                  class="link-action link-action--add"
+                  type="button"
+                  data-act="add-address"
+                >
+                  <svg class="icon" aria-hidden="true">
+                    <use href="#i-plus" />
+                  </svg>
+                  Add another address
+                </button>
+              </section>
+
+              <!-- Preferences -->
+              <section
+                class="panel-card"
+                id="panel-preferences"
+                aria-labelledby="prefs-title"
+                hidden
+              >
+                <p class="eyebrow">Make Foodie feel like yours</p>
+                <h2 class="panel-card__title" id="prefs-title">Preferences</h2>
+                <p class="panel-card__lead">
+                  Choose what is useful to you. You can change these at any
+                  time.
+                </p>
+                <form id="prefs-form">
+                  <ul class="prefs" role="list">
+                    <li class="pref">
+                      <div>
+                        <p class="pref__title" id="pv">
+                          Prioritise vegetarian choices
+                        </p>
+                        <p class="pref__hint">
+                          Give vegetarian restaurants and dishes more
+                          visibility.
+                        </p>
+                      </div>
+                      <label class="switch"
+                        ><input
+                          type="checkbox"
+                          role="switch"
+                          id="pref-vegetarian"
+                          aria-labelledby="pv" /><span
+                          class="switch__track"
+                          aria-hidden="true"
+                        ></span
+                      ></label>
+                    </li>
+                    <li class="pref">
+                      <div>
+                        <p class="pref__title" id="pc">
+                          Prefer contactless handoff
+                        </p>
+                        <p class="pref__hint">
+                          Use safe-place or reception delivery where possible.
+                        </p>
+                      </div>
+                      <label class="switch"
+                        ><input
+                          type="checkbox"
+                          role="switch"
+                          id="pref-contactless"
+                          aria-labelledby="pc" /><span
+                          class="switch__track"
+                          aria-hidden="true"
+                        ></span
+                      ></label>
+                    </li>
+                    <li class="pref">
+                      <div>
+                        <p class="pref__title" id="pu">
+                          Receive delivery updates
+                        </p>
+                        <p class="pref__hint">
+                          Get timely updates about the order journey.
+                        </p>
+                      </div>
+                      <label class="switch"
+                        ><input
+                          type="checkbox"
+                          role="switch"
+                          id="pref-updates"
+                          aria-labelledby="pu" /><span
+                          class="switch__track"
+                          aria-hidden="true"
+                        ></span
+                      ></label>
+                    </li>
+                  </ul>
+                  <button class="btn btn--primary" type="submit">
+                    Save preferences
+                  </button>
+                </form>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <dialog class="dialog" id="address-dialog" aria-labelledby="address-title">
+      <form class="dialog__inner" id="address-form" novalidate>
+        <h2 class="dialog__title" id="address-title">Add an address</h2>
+        <fieldset class="choice-list" style="border: 0; padding: 0; margin: 0">
+          <legend class="sr-only">Address label</legend>
+          <label class="choice"
+            ><input type="radio" name="label" value="Home" checked /><span
+              >Home</span
+            ></label
+          >
+          <label class="choice"
+            ><input type="radio" name="label" value="Work" /><span
+              >Work</span
+            ></label
+          >
+          <label class="choice"
+            ><input type="radio" name="label" value="Other" /><span
+              >Other</span
+            ></label
+          >
+        </fieldset>
+        <div class="field">
+          <label for="a-line">Address</label
+          ><input
+            id="a-line"
+            maxlength="120"
+            autocomplete="street-address"
+            required
+          />
+        </div>
+        <div class="field">
+          <label for="a-notes">Delivery instructions (optional)</label
+          ><input id="a-notes" maxlength="120" autocomplete="off" />
+        </div>
+        <label class="choice"
+          ><input type="checkbox" id="a-default" /><span
+            >Make this my default address</span
+          ></label
+        >
+        <p class="field-error" id="address-error" role="alert"></p>
+        <div class="dialog__actions">
+          <button
+            class="btn btn--outline push-left"
+            type="button"
+            id="a-delete"
+            hidden
+          >
+            Delete
+          </button>
+          <button class="btn btn--outline" type="button" id="a-cancel">
+            Cancel
+          </button>
+          <button class="btn btn--primary" type="submit">Save address</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="dialog" id="delete-dialog" aria-labelledby="delete-title">
+      <form class="dialog__inner" method="dialog">
+        <h2 class="dialog__title" id="delete-title">Delete this address?</h2>
+        <p class="dialog__text" id="delete-text"></p>
+        <div class="dialog__actions">
+          <button class="btn btn--outline" value="cancel">Keep it</button>
+          <button class="btn btn--primary" value="confirm">
+            Delete address
+          </button>
+        </div>
+      </form>
+    </dialog>
+
+    <div data-component="footer"></div>
+    <script type="module" src="js/account.js"></script>
+  </body>
+</html>
